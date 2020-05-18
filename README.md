@@ -1,5 +1,5 @@
 # Teste_Software_Fatec
- Analise e Desenvolvimento - 4sem
+ Análise e Desenvolvimento de Sistemas - 4sem
  
  ### Aluno
  - Rafael Augusto Campos Plinio
