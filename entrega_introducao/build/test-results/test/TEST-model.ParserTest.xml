@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="model.ParserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-05-19T01:20:47" hostname="Rafaels-Mini" time="1.389">
+  <properties/>
+  <testcase name="testParse()" classname="model.ParserTest" time="1.389"/>
+  <system-out><![CDATA[[COVID-19 pandemic, White stork, Iranian support vessel Konarak, Visakhapatnam gas leak, Deaths in 2020, Portal:Current events, Wikipedia:In the news/Candidates]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
