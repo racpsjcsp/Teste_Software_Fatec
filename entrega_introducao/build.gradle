@@ -3,7 +3,7 @@ plugins {
 	id 'application'
 }
 
-mainClassName = 'app.Aplicacao'
+mainClassName = 'app.App'
 
 sourceSets {
 	main {

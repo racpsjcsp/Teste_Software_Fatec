@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="model.ParserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-05-19T22:12:36" hostname="Rafaels-Mini" time="1.393">
+<testsuite name="model.ParserTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-05-25T23:01:53" hostname="Rafaels-Mini" time="2.113">
   <properties/>
-  <testcase name="testParse()" classname="model.ParserTest" time="1.393"/>
-  <system-out><![CDATA[[COVID-19 pandemic, Iranian support vessel Konarak, Visakhapatnam gas leak, HR 6819, Deaths in 2020, Portal:Current events, Wikipedia:In the news/Candidates]
+  <testcase name="testParseTitle()" classname="model.ParserTest" time="1.38"/>
+  <testcase name="testParseLink()" classname="model.ParserTest" time="0.731"/>
+  <system-out><![CDATA[Headlines atuais:
+[Pakistan International Airlines Flight 8303, Cyclone Amphan, Iranian support vessel Konarak, Deaths in 2020, Portal:Current events, Wikipedia:In the news/Candidates]
+Links principais:
+[/wiki/Portal:Arts, /wiki/Portal:Biography, /wiki/Portal:Geography, /wiki/Portal:History, /wiki/Portal:Mathematics, /wiki/Portal:Science, /wiki/Portal:Society, /wiki/Portal:Technology, /wiki/Wikipedia:Contents/Portals]
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

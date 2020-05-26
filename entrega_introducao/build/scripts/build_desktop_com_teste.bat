@@ -85,7 +85,7 @@ set CMD_LINE_ARGS=%*
 set CLASSPATH=%APP_HOME%\lib\build_desktop_com_teste.jar;%APP_HOME%\lib\jsoup-1.13.1.jar
 
 @rem Execute build_desktop_com_teste
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %BUILD_DESKTOP_COM_TESTE_OPTS%  -classpath "%CLASSPATH%" app.Aplicacao %CMD_LINE_ARGS%
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %BUILD_DESKTOP_COM_TESTE_OPTS%  -classpath "%CLASSPATH%" app.App %CMD_LINE_ARGS%
 
 :end
 @rem End local scope for the variables with windows NT shell

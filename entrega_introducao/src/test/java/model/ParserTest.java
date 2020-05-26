@@ -11,25 +11,55 @@ import model.ParserHTML;
 import java.util.ArrayList;
 
 public class ParserTest {
-    @Test public void testParse() {
+    @Test public void testParseTitle() {
         ParserHTML classUnderTest = new ParserHTML();
         
-        ArrayList<String> compara = new ArrayList<String>();
+        ArrayList<String> compara = new ArrayList<String>();      
         
         //headlines atuais
-        compara.add("COVID-19 pandemic");
-        compara.add("White stork");
+        compara.add("Pakistan International Airlines Flight 8303");
+        compara.add("Cyclone Amphan");
         compara.add("Iranian support vessel Konarak");
-        compara.add("Visakhapatnam gas leak");
         compara.add("Deaths in 2020");
         compara.add("Portal:Current events");
-        compara.add("Deaths in 2020");
-        compara.add("Wikipedia:In the news/Candidates");
-        
+        compara.add("Wikipedia:In the news/Candidates");       
+       
         //console - exibe headline atual
-        System.out.println(classUnderTest.parseFromWiki());
+        System.out.println("Headlines atuais:");
+        System.out.println(classUnderTest.parseFromWikiTitle());
         
-        ArrayList<String> results =classUnderTest.parseFromWiki();
-        assertEquals(compara.get(0), results.get(0));
+        
+        ArrayList<String> results = classUnderTest.parseFromWikiTitle();
+             
+        for(int x = 0; x < compara.size(); x++) {
+            assertEquals(compara.get(x), results.get(x));          
+        }
+    }
+    
+    @Test public void testParseLink() {
+        ParserHTML classUnderTest = new ParserHTML();
+        
+        ArrayList<String> compara = new ArrayList<String>();   
+   
+        //links principais
+        compara.add("/wiki/Portal:Arts");
+        compara.add("/wiki/Portal:Biography");
+        compara.add("/wiki/Portal:Geography");        
+        compara.add("/wiki/Portal:History");
+        compara.add("/wiki/Portal:Mathematics");
+        compara.add("/wiki/Portal:Science");
+        compara.add("/wiki/Portal:Society");
+        compara.add("/wiki/Portal:Technology");
+        compara.add("/wiki/Wikipedia:Contents/Portals");
+        
+        //console - exibe links principais
+        System.out.println("Links principais:");
+        System.out.println(classUnderTest.parseFromWikiLink());        
+        
+        ArrayList<String> results = classUnderTest.parseFromWikiLink();
+        
+        for(int x = 0; x < compara.size(); x++) {
+            assertEquals(compara.get(x), results.get(x));            
+        }
     }
 }
