@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="entrega_introducao/src/main"/>
+	<classpathentry kind="src" path="entrega_introducao/src/test/java"/>
+	<classpathentry kind="lib" path="entrega_introducao/build/libs/build_desktop_com_teste.jar"/>
+	<classpathentry kind="output" path="entrega_introducao/build/classes/java/main"/>
+</classpath>
