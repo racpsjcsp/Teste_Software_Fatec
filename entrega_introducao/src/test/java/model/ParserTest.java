@@ -28,7 +28,6 @@ public class ParserTest {
         System.out.println("Headlines atuais:");
         System.out.println(classUnderTest.parseFromWikiTitle());
         
-        
         ArrayList<String> results = classUnderTest.parseFromWikiTitle();
              
         for(int x = 0; x < compara.size(); x++) {
