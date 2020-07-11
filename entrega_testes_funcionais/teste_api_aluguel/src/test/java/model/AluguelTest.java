@@ -32,7 +32,7 @@ public class AluguelTest {
     @Test public void testNominalRACP2() throws JSONException {
         Aluguel alug = new Aluguel();
         
-        dia = 6; //6, 7, 8, 9
+        dia = 6; //4,5,6
 
         if (dia == 4 || dia == 5) {      	
         	Double testNominalRACP2 = valor-(valor*0.10); //dia 9 -> -5,14% aprox
@@ -50,7 +50,7 @@ public class AluguelTest {
     @Test public void testNominalRACP3() throws JSONException {
         Aluguel alug = new Aluguel();
         
-        dia = 11; //11, 12, 13, 15
+        dia = 11; //9,10,11
 
         if (dia == 9) {      	
         	Double testNominalRACP3 = valor-35.5; //dia 15  -> -10%
@@ -68,7 +68,7 @@ public class AluguelTest {
     @Test public void testNominalRACP4() throws JSONException {
         Aluguel alug = new Aluguel();
         
-        dia = 16; //16,17,18...29,30,31
+        dia = 16; //14,15,16...29,30,31
 
         if (dia == 16) {      	
         	Double testNominalRACP4 = valor+(valor*0.021); //dia 16 -> +2,1%
