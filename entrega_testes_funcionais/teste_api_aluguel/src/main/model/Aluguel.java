@@ -44,5 +44,7 @@ public class Aluguel {
     	
     	return obj;
     }
+
+	
     
 }

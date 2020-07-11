@@ -9,10 +9,10 @@
 Video: https://youtu.be/4VGaHI_l1cA
 
 ### entrega_testes_estruturais
-Video:
+Video: 
 
 ### entrega_testes_funcionais
-Video:
+Video: https://youtu.be/13Ej5hY-T7s
 
 ### entrega_testes_mock
 Video:

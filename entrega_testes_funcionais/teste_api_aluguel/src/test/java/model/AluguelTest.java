@@ -8,161 +8,98 @@ import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
 public class AluguelTest {
-	Double valor;
+	Double valor = 690.00;
 	int dia;
-	
-/*
-    1) O valor nominal, descontado de 10%, caso o pagamento seja efetuado entre os dias 1 (inclusive) e 5 (inclusive).
-    2) O valor nominal, descontado de 5%, caso o pagamento seja efetuado entre os dias 6 (inclusive) e 10 (inclusive).
-    3) O valor nominal, caso o pagamento seja efetuado entre os dias 11 (inclusive) e 15 (inclusive).
-    4) O valor nominal, acrescido de multa de 2% e 0.1% ao dia, caso o pagamento seja efetuado entre os dias 16(inclusive) e 30 (inclusive).
-     
-*/
+
     @Test public void testNominalRACP1() throws JSONException {
         Aluguel alug = new Aluguel();
         
-        valor = 690.00;
-        dia = 1; //1, 2, 3, 4, 5
+        dia = 2; //0,1,2 
 
-        Double testNominalRACP1 = valor-(valor*0.10); //dia 1 ao 5 -> -10%  621.00
-
-    	JSONObject result = alug.inputAluguelDia(valor,dia);
-    	System.out.println(result);
-        assertEquals(testNominalRACP1, result.get("valor_calculado"));
+        if (dia == 1 || dia == 2) {
+        	Double testNominalRACP1 = valor-(valor*0.10); //dia 1 ao 5 -> -10%  621.00
+         	JSONObject result = alug.inputAluguelDia(valor,dia);
+         	System.out.println(result);
+            assertEquals(testNominalRACP1, result.getDouble("valor_calculado"), 0.01);
+        } else if (dia < 0) {
+        	int testNominalRACP1 = -1; //dia < 0	    	
+	    	JSONObject result = alug.inputAluguelDia(valor,dia);
+	    	System.out.println(result);
+	        assertEquals(testNominalRACP1, result.getDouble("valor_calculado"), 0.01);
+        }
     }
-    
+       
     @Test public void testNominalRACP2() throws JSONException {
         Aluguel alug = new Aluguel();
         
-        valor = 690.00;
-        dia = 9; //6, 7, 8, 9, 10
+        dia = 6; //4,5,6
 
-        if (dia == 9) {      	
-        	Double testNominalRACP2 = valor-35.5; //dia 9 -> -5,14% aprox
+        if (dia == 4 || dia == 5) {      	
+        	Double testNominalRACP2 = valor-(valor*0.10); //dia 9 -> -5,14% aprox
 	    	JSONObject result = alug.inputAluguelDia(valor,dia);
 	    	System.out.println(result);
-	        assertEquals(testNominalRACP2, result.get("valor_calculado"));
-	    } else {
+	        assertEquals(testNominalRACP2, result.getDouble("valor_calculado"),0.01);
+	    } else if (dia == 6) {
 	    	Double testNominalRACP2 = valor-(valor*0.05); //dia 6 ao 10 -> -5%
 	    	JSONObject result = alug.inputAluguelDia(valor,dia);
 	    	System.out.println(result);
-	        assertEquals(testNominalRACP2, result.get("valor_calculado"));
+	        assertEquals(testNominalRACP2, result.getDouble("valor_calculado"),0.01);
 	    }
     }
     
     @Test public void testNominalRACP3() throws JSONException {
         Aluguel alug = new Aluguel();
         
-        valor = 690.00;
-        dia = 13; //11, 12, 13, 14, 15
+        dia = 11; //9,10,11
 
-        if (dia == 15) {      	
-        	Double testNominalRACP3 = valor-(valor*0.10); //dia 15  -> -10%
+        if (dia == 9) {      	
+        	Double testNominalRACP3 = valor-35.5; //dia 15  -> -10%
 	    	JSONObject result = alug.inputAluguelDia(valor,dia);
 	    	System.out.println(result);
-	        assertEquals(testNominalRACP3, result.get("valor_calculado"));
-	    } else {
+	        assertEquals(testNominalRACP3, result.getDouble("valor_calculado"),0.01);
+	    } else if (dia == 11 || dia == 10) {
 	    	Double testNominalRACP3 = valor; //dia 11 ao 14 -> 0%
 	    	JSONObject result = alug.inputAluguelDia(valor,dia);
 	    	System.out.println(result);
-	        assertEquals(testNominalRACP3, result.get("valor_calculado"));
+	        assertEquals(testNominalRACP3, result.getDouble("valor_calculado"),0.01);
 	    }
     }
     
     @Test public void testNominalRACP4() throws JSONException {
         Aluguel alug = new Aluguel();
         
-        valor = 690.00;
-        dia = 27; //16...30
+        dia = 16; //16,17,18...29,30,31
 
         if (dia == 16) {      	
         	Double testNominalRACP4 = valor+(valor*0.021); //dia 16 -> +2,1%
 	    	JSONObject result = alug.inputAluguelDia(valor,dia);
 	    	System.out.println(result);
-	        assertEquals(testNominalRACP4, result.get("valor_calculado"));
-	    } else if (dia == 17) {
-	    	Double testNominalRACP4 = valor+(valor*0.022); //dia 17 -> +2,2%
-	    	JSONObject result = alug.inputAluguelDia(valor,dia);
-	    	System.out.println(result);
-	        assertEquals(testNominalRACP4, result.get("valor_calculado"));
-	    } else if (dia == 18) {
-	    	Double testNominalRACP4 = valor+(valor*0.023); //dia 18 -> +2,3%
-	    	JSONObject result = alug.inputAluguelDia(valor,dia);
-	    	System.out.println(result);
-	        assertEquals(testNominalRACP4, result.get("valor_calculado"));
-	    } else if (dia == 19) {
-	    	Double testNominalRACP4 = valor+(valor*0.024); //dia 19 -> +2,4%
-	    	JSONObject result = alug.inputAluguelDia(valor,dia);
-	    	System.out.println(result);
-	        assertEquals(testNominalRACP4, result.get("valor_calculado"));
-	    } else if (dia == 20) {
-	    	Double testNominalRACP4 = valor+(valor*0.025); //dia 20 -> +2,5%
-	    	JSONObject result = alug.inputAluguelDia(valor,dia);
-	    	System.out.println(result);
-	        assertEquals(testNominalRACP4, result.get("valor_calculado"));
-	    } else if (dia == 21) {
-	    	Double testNominalRACP4 = valor+(valor*0.026); //dia 21 -> +2,6%
-	    	JSONObject result = alug.inputAluguelDia(valor,dia);
-	    	System.out.println(result);
-	        assertEquals(testNominalRACP4, result.get("valor_calculado"));
-	    } else if (dia == 22) {
-	    	Double testNominalRACP4 = valor+(valor*0.027); //dia 22 -> +2,7%
-	    	JSONObject result = alug.inputAluguelDia(valor,dia);
-	    	System.out.println(result);
-	        assertEquals(testNominalRACP4, result.get("valor_calculado"));
-	    } else if (dia == 23) {
-	    	Double testNominalRACP4 = valor+(valor*0.028); //dia 23 -> +2,8%
-	    	JSONObject result = alug.inputAluguelDia(valor,dia);
-	    	System.out.println(result);
-	        assertEquals(testNominalRACP4, result.get("valor_calculado"));
-	    } else if (dia == 24) {
-	    	Double testNominalRACP4 = valor+(valor*0.029); //dia 24 -> +2,9%
-	    	JSONObject result = alug.inputAluguelDia(valor,dia);
-	    	System.out.println(result);
-	        assertEquals(testNominalRACP4, result.get("valor_calculado"));
-	    } else if (dia == 25) {
-	    	Double testNominalRACP4 = valor+(valor*0.030); //dia 25 -> +3,0%
-	    	JSONObject result = alug.inputAluguelDia(valor,dia);
-	    	System.out.println(result);
-	        assertEquals(testNominalRACP4, result.get("valor_calculado"));
-	    } else if (dia == 26) {
-	    	Double testNominalRACP4 = valor+(valor*0.031); //dia 26 -> +3,1%
-	    	JSONObject result = alug.inputAluguelDia(valor,dia);
-	    	System.out.println(result);
-	        assertEquals(testNominalRACP4, result.get("valor_calculado"));
-	    } else if (dia == 27) {
-	    	Double testNominalRACP4 = valor+(valor*0.032); //dia 27 -> +3,2%
-	    	JSONObject result = alug.inputAluguelDia(valor,dia);
-	    	System.out.println(result);
-	        assertEquals(testNominalRACP4, result.get("valor_calculado"));
-	    } else if (dia == 28) {
-	    	Double testNominalRACP4 = valor+(valor*0.033); //dia 28 -> +3,3%
-	    	JSONObject result = alug.inputAluguelDia(valor,dia);
-	    	System.out.println(result);
-	        assertEquals(testNominalRACP4, result.get("valor_calculado"));
-	    } else if (dia == 29) {
-	    	Double testNominalRACP4 = valor+(valor*0.034); //dia 29 -> +3,4%
-	    	JSONObject result = alug.inputAluguelDia(valor,dia);
-	    	System.out.println(result);
-	        assertEquals(testNominalRACP4, result.get("valor_calculado"));
+	        assertEquals(testNominalRACP4, result.getDouble("valor_calculado"),0.01);
+	     } else if (dia == 15) {
+	     	Double testNominalRACP4 = valor+(valor*0.10); //dia 15
+	     	JSONObject result = alug.inputAluguelDia(valor,dia);
+	     	System.out.println(result);
+	        assertEquals(testNominalRACP4, result.getDouble("valor_calculado"),0.01);
+	     } else if (dia == 14) {
+	     	Double testNominalRACP4 = valor; //dia 14 0%
+	     	JSONObject result = alug.inputAluguelDia(valor,dia);
+	     	System.out.println(result);
+	        assertEquals(testNominalRACP4, result.getDouble("valor_calculado"),0.01);
+	     } else if (dia == 29) {
+	     	Double testNominalRACP4 = valor+(valor*0.034); //dia 29 -> +3,4%
+	     	JSONObject result = alug.inputAluguelDia(valor,dia);
+	     	System.out.println(result);
+	        assertEquals(testNominalRACP4, result.getDouble("valor_calculado"),0.01);
 	    } else if (dia == 30) {
 	    	Double testNominalRACP4 = valor+(valor*0.035); //dia 30 -> +3,5%
 	    	JSONObject result = alug.inputAluguelDia(valor,dia);
 	    	System.out.println(result);
-	        assertEquals(testNominalRACP4, result.get("valor_calculado"));
+	        assertEquals(testNominalRACP4, result.getDouble("valor_calculado"),0.01);
+	    } else if (dia >= 31) {	    	
+	    	int testNominalRACP4 = -1; //dia >= 31	    	
+	    	JSONObject result = alug.inputAluguelDia(valor,dia);
+	    	System.out.println(result);
+	        assertEquals(testNominalRACP4, result.getDouble("valor_calculado"),0.01);
 	    }
-    }
-    
-    @Test public void testNominalRACP5() throws JSONException {
-        Aluguel alug = new Aluguel();
-        
-        valor = 690.00;
-        dia = 33; //<= 0 ou >= 31
-
-        int testNominalRACP5 = -1; //dia <= 0 ou >= 31
-
-    	JSONObject result = alug.inputAluguelDia(valor,dia);
-    	System.out.println(result);
-        assertEquals(testNominalRACP5, result.get("valor_calculado"));
     }    
 }
