@@ -12,8 +12,8 @@ Video: https://youtu.be/4VGaHI_l1cA
 Video: 
 
 ### entrega_testes_funcionais
-Video: https://youtu.be/13Ej5hY-T7s
-
+Video: https://youtu.be/13Ej5hY-T7s \
+Video: https://youtu.be/oZVVVDV7Dys (Teste Parametrizado com Valores Limites)
 ### entrega_testes_mock
 Video:
 
