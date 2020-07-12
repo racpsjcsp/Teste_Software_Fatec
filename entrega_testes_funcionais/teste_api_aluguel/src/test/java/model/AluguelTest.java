@@ -15,7 +15,7 @@ public class AluguelTest {
         Aluguel alug = new Aluguel();      
 
         for (int dia = 0; dia <= 2; dia++) {
-        	Double testNominalRACP1 = valor-(valor*0.10); //dia 1 ao 5 -> -10%  621.00
+        	Double testNominalRACP1 = valor-(valor*0.10);
             JSONObject result = alug.inputAluguelDia(valor,dia);
             assertEquals(testNominalRACP1, result.getDouble("valor_calculado"), 0.01);           
         }  
@@ -26,7 +26,7 @@ public class AluguelTest {
         
         for (int dia = 4; dia <= 6; dia++) {    	
         	if (dia == 4 || dia == 5) {
-        		Double testNominalRACP2 = valor-(valor*0.10); //dia 1 ao 5 -> -10%  621.00
+        		Double testNominalRACP2 = valor-(valor*0.10);
                 JSONObject result = alug.inputAluguelDia(valor,dia);
                 assertEquals(testNominalRACP2, result.getDouble("valor_calculado"), 0.01);
         	} else if (dia == 6) {
@@ -62,15 +62,15 @@ public class AluguelTest {
         
         for (int dia = 14; dia <= 16; dia++) {
         	if (dia == 16) {      	
-            	Double testNominalRACP4 = valor+(valor*0.021); //dia 16 -> +2,1%
+            	Double testNominalRACP4 = valor+(valor*0.021);
     	    	JSONObject result = alug.inputAluguelDia(valor,dia);
     	        assertEquals(testNominalRACP4, result.getDouble("valor_calculado"),0.01);
     	     } else if (dia == 15) {
-    	     	Double testNominalRACP4 = valor-(valor*0.10); //dia 15
+    	     	Double testNominalRACP4 = valor-(valor*0.10);
     	     	JSONObject result = alug.inputAluguelDia(valor,dia);
     	        assertEquals(testNominalRACP4, result.getDouble("valor_calculado"),0.01);
     	     } else if (dia == 14) {
-    	     	Double testNominalRACP4 = valor; //dia 14 0%
+    	     	Double testNominalRACP4 = valor;
     	     	JSONObject result = alug.inputAluguelDia(valor,dia);
     	        assertEquals(testNominalRACP4, result.getDouble("valor_calculado"),0.01);
     	     }
